@@ -24,6 +24,6 @@ console.log(createTableCells(TABLE_SIZE, NUM_OF_MINES))
 
 // @ToDo
 // Populate board with tiles and mines ✔️
-// Left click on tiles reveals tiles
-// Right click on tiles marks tiles
+// Left click on tiles reveals cells
+// Right click on tiles marks cells
 // Check for win/lose conditions
