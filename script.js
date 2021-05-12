@@ -1,18 +1,29 @@
 // UI
 import { createTableCells } from './logic.js'
 
-const BOARD_SIZE = 5
+const TABLE_SIZE = 5
 const NUM_OF_MINES = 3
 
 const board = document.querySelector('.board')
-const table = createTableCells(BOARD_SIZE, NUM_OF_MINES)
+const table = createTableCells(TABLE_SIZE, NUM_OF_MINES)
+const remainingMines = document.querySelector('[data-remaining-mines]')
 
-board.style.setProperty('--size', BOARD_SIZE)
-table.forEach(row => row.forEach(col => board.appendChild(col.cell)))
+board.style.setProperty('--size', TABLE_SIZE)
+table.forEach(row =>
+	row.forEach(({ cell }) => {
+		board.appendChild(cell)
+		cell.addEventListener('click', e => {})
+		cell.addEventListener('contextmenu', e => {
+			e.preventDefault()
+		})
+	})
+)
+remainingMines.textContent = NUM_OF_MINES
 
-console.log(createTableCells(2, 2))
+console.log(createTableCells(TABLE_SIZE, NUM_OF_MINES))
 
-// Populate board with tiles and mines
+// @ToDo
+// Populate board with tiles and mines ✔️
 // Left click on tiles reveals tiles
 // Right click on tiles marks tiles
 // Check for win/lose conditions
