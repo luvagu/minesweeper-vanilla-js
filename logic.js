@@ -38,21 +38,38 @@ export const createTableCells = (tableSize, numOfMines) => {
 
 		return new Array(tableSize).fill(null).map(() => {
 			col++
-			const cell = document.createElement('div')
-			cell.dataset.status = CELL_STATUSES.HIDDEN
+			const element = document.createElement('div')
+			element.dataset.status = CELL_STATUSES.HIDDEN
 
 			return {
-				cell,
+				element,
 				row,
 				col,
 				mine: minePositions.some(locationMatch.bind(null, { row, col })),
 				get status() {
-					return this.cell.dataset.status
+					return this.element.dataset.status
 				},
 				set status(value) {
-					this.cell.dataset.status = value
+					this.element.dataset.status = value
 				},
 			}
 		})
 	})
 }
+
+export const markCell = cell => {
+	if (
+		cell.status !== CELL_STATUSES.HIDDEN &&
+		cell.status !== CELL_STATUSES.MARKED
+	) {
+		return
+	}
+
+	if (cell.status === CELL_STATUSES.MARKED) {
+		cell.status = CELL_STATUSES.HIDDEN
+	} else {
+		cell.status = CELL_STATUSES.MARKED
+	}
+}
+
+export const revealCell = cell => {}
