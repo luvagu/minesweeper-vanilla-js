@@ -4,12 +4,13 @@
 
 body {
 	margin: 0;
-	background-color: #333;
+	background-color: rgb(15, 54, 90);
 	display: flex;
 	align-items: center;
 	font-size: 3rem;
 	flex-direction: column;
-	color: white;
+	color: whitesmoke;
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .title {
@@ -17,8 +18,9 @@ body {
 }
 
 .subtext {
-	color: #ccc;
+	color: lightgray;
 	font-size: 1.5rem;
+	font-family: 'Courier New', Courier, monospace;
 	margin-bottom: 10px;
 }
 
@@ -28,7 +30,8 @@ body {
 	grid-template-columns: repeat(var(--size), 60px);
 	grid-template-rows: repeat(var(--size), 60px);
 	gap: 4px;
-	background-color: #777;
+	background-color: rgb(13, 99, 168);
+	box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
 }
 
 .board > * {
@@ -48,7 +51,7 @@ body {
 }
 
 .board > [data-status='mine'] {
-	background-color: red;
+	background-color: rgb(173, 12, 12);
 }
 
 .board > [data-status='number'] {

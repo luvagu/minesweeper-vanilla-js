@@ -61,7 +61,10 @@ function checkGameOutcome() {
 
 	if (lose) {
 		messageText.textContent = 'You lose!'
-		table.forEach(row => row.forEach(cell ))
+		table.forEach(row => row.forEach(cell => {
+			if (cell.status === CELL_STATUSES.MARKED) markCell(cell)
+			if (cell.mine) revealCells(table, cell)
+		}))
 	}
 }
 
