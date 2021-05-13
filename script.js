@@ -3,7 +3,7 @@ import {
 	CELL_STATUSES,
 	createTableCells,
 	markCell,
-	revealCell,
+	revealCells,
 	checkForWin,
 	checkForLoss
 } from './logic.js'
@@ -22,7 +22,7 @@ table.forEach(row =>
 	row.forEach(cell => {
 		board.appendChild(cell.element)
 		cell.element.addEventListener('click', () => {
-			revealCell(table, cell)
+			revealCells(table, cell)
 			checkGameOutcome()
 		})
 		cell.element.addEventListener('contextmenu', e => {
@@ -58,9 +58,11 @@ function checkGameOutcome() {
 	}
 
 	if (win) messageText.textContent = 'You win!'
-	if (lose) messageText.textContent = 'You lose!'
 
-
+	if (lose) {
+		messageText.textContent = 'You lose!'
+		table.forEach(row => row.forEach(cell ))
+	}
 }
 
 // @ToDo

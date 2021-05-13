@@ -85,7 +85,7 @@ const getNearbyCells = (table, { row, col }) => {
 	return nearbyCells
 }
 
-export const revealCell = (table, cell) => {
+export const revealCells = (table, cell) => {
 	if (cell.status !== CELL_STATUSES.HIDDEN) {
 		return
 	}
@@ -106,6 +106,6 @@ export const revealCell = (table, cell) => {
 	}
 }
 
-export const checkForWin = () => true
+export const checkForWin = () => false
 
-export const checkForLoss = () => false
+export const checkForLoss = () => true
