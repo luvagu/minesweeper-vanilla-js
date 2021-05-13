@@ -78,4 +78,4 @@ function checkGameOutcome() {
 // Populate board with cells and mines ✔️
 // Left click on tiles reveals cells ✔️
 // Right click on tiles marks cells ✔️
-// Check for win/lose conditions
+// Check for win/lose conditions ✔️
