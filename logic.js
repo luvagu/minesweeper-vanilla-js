@@ -105,3 +105,7 @@ export const revealCell = (table, cell) => {
 		cell.element.textContent = mines.length
 	}
 }
+
+export const checkForWin = () => true
+
+export const checkForLoss = () => false

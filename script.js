@@ -4,6 +4,8 @@ import {
 	createTableCells,
 	markCell,
 	revealCell,
+	checkForWin,
+	checkForLoss
 } from './logic.js'
 
 const TABLE_SIZE = 10
@@ -11,6 +13,7 @@ const NUM_OF_MINES = 10
 
 const board = document.querySelector('.board')
 const table = createTableCells(TABLE_SIZE, NUM_OF_MINES)
+const messageText = document.querySelector('.subtext')
 const remainingMines = document.querySelector('[data-remaining-mines]')
 
 board.style.setProperty('--size', TABLE_SIZE)
@@ -20,6 +23,7 @@ table.forEach(row =>
 		board.appendChild(cell.element)
 		cell.element.addEventListener('click', () => {
 			revealCell(table, cell)
+			checkGameOutcome()
 		})
 		cell.element.addEventListener('contextmenu', e => {
 			e.preventDefault()
@@ -40,6 +44,23 @@ function getRemainingMines() {
 
 	const totalRemaining = NUM_OF_MINES - makedCellsCount
 	remainingMines.textContent = totalRemaining > 0 ? totalRemaining : 0
+}
+
+function checkGameOutcome() {
+	const win = checkForWin()
+	const lose = checkForLoss()
+
+	const stopPropagation = e => e.stopImmediatePropagation()
+
+	if (win || lose) {
+		board.addEventListener('click', stopPropagation, { capture: true })
+		board.addEventListener('contextmenu', stopPropagation, { capture: true })
+	}
+
+	if (win) messageText.textContent = 'You win!'
+	if (lose) messageText.textContent = 'You lose!'
+
+
 }
 
 // @ToDo
