@@ -6,8 +6,8 @@ import {
 	revealCell,
 } from './logic.js'
 
-const TABLE_SIZE = 5
-const NUM_OF_MINES = 3
+const TABLE_SIZE = 10
+const NUM_OF_MINES = 10
 
 const board = document.querySelector('.board')
 const table = createTableCells(TABLE_SIZE, NUM_OF_MINES)
@@ -44,6 +44,6 @@ function getRemainingMines() {
 
 // @ToDo
 // Populate board with tiles and mines ✔️
-// Left click on tiles reveals cells
-// Right click on tiles marks cells
+// Left click on tiles reveals cells ✔️
+// Right click on tiles marks cells ✔️
 // Check for win/lose conditions

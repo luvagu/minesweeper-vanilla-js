@@ -100,7 +100,7 @@ export const revealCell = (table, cell) => {
 	const mines = nearbyCells.filter(cell => cell.mine)
 
 	if (mines.length === 0) {
-		
+		nearbyCells.forEach(revealCell.bind(null, table))
 	} else {
 		cell.element.textContent = mines.length
 	}
