@@ -11,8 +11,9 @@ The old and beloved Minesweeper game of all time built with `Vanilla JavaScript`
 
 - Play `Minesweeper`
 - Indicates when a player `wins` or `loses`
-- Mark or unmark possible mines
-- Reveal nearby mines with number indicator
+- `Right click` to mark or unmark possible mines
+- `Left click` to reveal nearby mines with number indicator
+- Mines revealed when losing the game
 
 Try the demo account at: https://luvagu.github.io/minesweeper-vanilla-js
 
