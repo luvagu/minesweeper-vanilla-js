@@ -48,7 +48,7 @@ function getRemainingMines() {
 
 function checkGameOutcome() {
 	const win = checkForWin()
-	const lose = checkForLoss()
+	const lose = checkForLoss(table)
 
 	const stopPropagation = e => e.stopImmediatePropagation()
 

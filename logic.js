@@ -106,6 +106,6 @@ export const revealCells = (table, cell) => {
 	}
 }
 
-export const checkForWin = () => false
+export const checkForWin = (table) => false
 
-export const checkForLoss = () => true
+export const checkForLoss = (table) => table.some(row => row.some(({ status }) => status === CELL_STATUSES.MINE))
