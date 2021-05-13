@@ -5,11 +5,11 @@ import {
 	markCell,
 	revealCells,
 	checkForWin,
-	checkForLoss
+	checkForLoss,
 } from './logic.js'
 
 const TABLE_SIZE = 10
-const NUM_OF_MINES = 10
+const NUM_OF_MINES = 3
 
 const board = document.querySelector('.board')
 const table = createTableCells(TABLE_SIZE, NUM_OF_MINES)
@@ -47,7 +47,7 @@ function getRemainingMines() {
 }
 
 function checkGameOutcome() {
-	const win = checkForWin()
+	const win = checkForWin(table)
 	const lose = checkForLoss(table)
 
 	const stopPropagation = e => e.stopImmediatePropagation()
@@ -61,15 +61,17 @@ function checkGameOutcome() {
 
 	if (lose) {
 		messageText.textContent = 'You lose!'
-		table.forEach(row => row.forEach(cell => {
-			if (cell.status === CELL_STATUSES.MARKED) markCell(cell)
-			if (cell.mine) revealCells(table, cell)
-		}))
+		table.forEach(row =>
+			row.forEach(cell => {
+				if (cell.status === CELL_STATUSES.MARKED) markCell(cell)
+				if (cell.mine) revealCells(table, cell)
+			})
+		)
 	}
 }
 
 // @ToDo
-// Populate board with tiles and mines ✔️
+// Populate board with cells and mines ✔️
 // Left click on tiles reveals cells ✔️
 // Right click on tiles marks cells ✔️
 // Check for win/lose conditions

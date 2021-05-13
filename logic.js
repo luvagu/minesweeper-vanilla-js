@@ -100,12 +100,21 @@ export const revealCells = (table, cell) => {
 	const mines = nearbyCells.filter(cell => cell.mine)
 
 	if (mines.length === 0) {
-		nearbyCells.forEach(revealCell.bind(null, table))
+		nearbyCells.forEach(revealCells.bind(null, table))
 	} else {
 		cell.element.textContent = mines.length
 	}
 }
 
-export const checkForWin = (table) => false
+export const checkForWin = table =>
+	table.every(row =>
+		row.every(
+			cell =>
+				cell.status === CELL_STATUSES.NUMBER ||
+				(cell.mine && (cell.status === CELL_STATUSES.MARKED ||
+				cell.status === CELL_STATUSES.HIDDEN))
+		)
+	)
 
-export const checkForLoss = (table) => table.some(row => row.some(({ status }) => status === CELL_STATUSES.MINE))
+export const checkForLoss = table =>
+	table.some(row => row.some(({ status }) => status === CELL_STATUSES.MINE))
