@@ -57,10 +57,14 @@ function checkGameOutcome() {
 		board.addEventListener('contextmenu', stopPropagation, { capture: true })
 	}
 
-	if (win) messageText.textContent = 'You win!'
+	if (win) {
+		messageText.textContent = 'You win!'
+		messageText.style.color = 'yellow'
+	}
 
 	if (lose) {
 		messageText.textContent = 'You lose!'
+		messageText.style.color = '#ad0c0c'
 		table.forEach(row =>
 			row.forEach(cell => {
 				if (cell.status === CELL_STATUSES.MARKED) markCell(cell)
