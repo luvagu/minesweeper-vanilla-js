@@ -9,7 +9,7 @@ import {
 } from './logic.js'
 
 const TABLE_SIZE = 10
-const NUM_OF_MINES = 3
+const NUM_OF_MINES = 10
 
 const board = document.querySelector('.board')
 const table = createTableCells(TABLE_SIZE, NUM_OF_MINES)
