@@ -19,7 +19,7 @@ table.forEach(row =>
 	row.forEach(cell => {
 		board.appendChild(cell.element)
 		cell.element.addEventListener('click', () => {
-			revealCell(cell)
+			revealCell(table, cell)
 		})
 		cell.element.addEventListener('contextmenu', e => {
 			e.preventDefault()
@@ -41,8 +41,6 @@ function getRemainingMines() {
 	const totalRemaining = NUM_OF_MINES - makedCellsCount
 	remainingMines.textContent = totalRemaining > 0 ? totalRemaining : 0
 }
-
-console.log()
 
 // @ToDo
 // Populate board with tiles and mines ✔️

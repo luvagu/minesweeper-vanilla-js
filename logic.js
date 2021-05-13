@@ -7,7 +7,7 @@ export const CELL_STATUSES = {
 	MARKED: 'marked',
 }
 
-const randomInteger = tableSize => Math.floor(Math.random() * tableSize + 1)
+const randomInteger = tableSize => Math.floor(Math.random() * tableSize)
 
 const locationMatch = (a, b) => a.row === b.row && a.col === b.col
 
@@ -30,11 +30,11 @@ const getMineLocations = (tableSize, numOfMines) => {
 
 export const createTableCells = (tableSize, numOfMines) => {
 	const minePositions = getMineLocations(tableSize, numOfMines)
-	let row = 0
+	let row = -1
 
 	return new Array(tableSize).fill(null).map(() => {
 		row++
-		let col = 0
+		let col = -1
 
 		return new Array(tableSize).fill(null).map(() => {
 			col++
@@ -72,4 +72,36 @@ export const markCell = cell => {
 	}
 }
 
-export const revealCell = cell => {}
+const getNearbyCells = (table, { row, col }) => {
+	const nearbyCells = []
+
+	for (let rowOffset = -1; rowOffset <= 1; rowOffset++) {
+		for (let colOffset = -1; colOffset <= 1; colOffset++) {
+			const cell = table[row + rowOffset]?.[col + colOffset]
+			if (cell) nearbyCells.push(cell)
+		}
+	}
+
+	return nearbyCells
+}
+
+export const revealCell = (table, cell) => {
+	if (cell.status !== CELL_STATUSES.HIDDEN) {
+		return
+	}
+
+	if (cell.mine) {
+		cell.status = CELL_STATUSES.MINE
+		return
+	}
+
+	cell.status = CELL_STATUSES.NUMBER
+	const nearbyCells = getNearbyCells(table, cell)
+	const mines = nearbyCells.filter(cell => cell.mine)
+
+	if (mines.length === 0) {
+		
+	} else {
+		cell.element.textContent = mines.length
+	}
+}
